@@ -12,15 +12,15 @@ win = False
 ############### MAP GENERATION #################
 grass = []
 for i in range(6):  # Generates Grass
-    patch = gamebox.from_image(400, 1200 - i * 600, 'grass.png')
+    patch = gamebox.from_image(400, 1200 - i * 600, 'Textures/grass.png')
     grass.append(patch)
 
-steps = gamebox.from_image(400, 850, 'rotunda.png')
+steps = gamebox.from_image(400, 850, 'Textures/rotunda.png')
 
 roofs = []
 for i in range(8):  # Generates Lawn Houses
-    x = gamebox.from_image(15, 660 - i * 280, 'longroof.png')
-    y = gamebox.from_image(785, 660 - i * 280, 'longroof.png')
+    x = gamebox.from_image(15, 660 - i * 280, 'Textures/longroof.png')
+    y = gamebox.from_image(785, 660 - i * 280, 'Textures/longroof.png')
     roofs.append(x)
     roofs.append(y)
 
@@ -31,8 +31,8 @@ for each in grass:
 
 top_roofs = []
 for i in range(5):  # Generates building at top of map
-    x = gamebox.from_image(100 + i * 280, -1650, 'longroof.png')
-    y = gamebox.from_image(100 + i * 280, -1650, 'longroof.png')
+    x = gamebox.from_image(100 + i * 280, -1650, 'Textures/longroof.png')
+    y = gamebox.from_image(100 + i * 280, -1650, 'Textures/longroof.png')
     x.rotate(90)
     y.rotate(90)
     top_roofs.append(x)
@@ -42,16 +42,16 @@ for roof in top_roofs:
 
 brick = []
 for i in range(4):  # Generates brick at top of map
-    wall = gamebox.from_image(50 + i * 250, -1570, 'minecraft_brick.png')
+    wall = gamebox.from_image(50 + i * 250, -1570, 'Textures/minecraft_brick.png')
     wall.scale_by(.25)
     brick.append(wall)
 
 for i in range(3):
-    path = gamebox.from_image(205 + 205 * i, 100, 'brick.png')
+    path = gamebox.from_image(205 + 205 * i, 100, 'Textures/brick.png')
     brick.append(path)
-    path2 = gamebox.from_image(205 + 205 * i, -300, 'brick.png')
+    path2 = gamebox.from_image(205 + 205 * i, -300, 'Textures/brick.png')
     brick.append(path2)
-    path3 = gamebox.from_image(205 + 205 * i, -800, 'brick.png')
+    path3 = gamebox.from_image(205 + 205 * i, -800, 'Textures/brick.png')
     brick.append(path3)
 # walls to set map boundaries
 invis_wall = [
@@ -61,7 +61,7 @@ invis_wall = [
     gamebox.from_color(400, -1400, 'red', 800, 20)
 ]
 
-statue = gamebox.from_image(400, -1200, 'homerstatue.png')  # homer statue used for checkpoint
+statue = gamebox.from_image(400, -1200, 'Textures/homerstatue.png')  # homer statue used for checkpoint
 statue.scale_by(.5)
 
 walking_speed = 9  # player speed
@@ -77,10 +77,10 @@ def make_player(x, y):
     :return: list of player sprites
     """
     global frames, player_down
-    images1 = gamebox.load_sprite_sheet("naked_up.png", 1, 4)
-    images2 = gamebox.load_sprite_sheet("naked_down.png", 1, 4)
-    images3 = gamebox.load_sprite_sheet("naked_left.png", 1, 4)
-    images4 = gamebox.load_sprite_sheet("naked_right.png", 1, 4)
+    images1 = gamebox.load_sprite_sheet("Textures/naked_up.png", 1, 4)
+    images2 = gamebox.load_sprite_sheet("Textures/naked_down.png", 1, 4)
+    images3 = gamebox.load_sprite_sheet("Textures/naked_left.png", 1, 4)
+    images4 = gamebox.load_sprite_sheet("Textures/naked_right.png", 1, 4)
     player = []
     for image in images1:
         player.append(gamebox.from_image(x, y, image))
@@ -152,7 +152,7 @@ def move_player(player, keys):
                 checkpoint = True  # Gives player a checkpoint when touching the homer statue
         for each in player:
             if checkpoint:
-                statue_icon = gamebox.from_image(camera.x - 300, camera.y - 250, 'statue_icon.png')
+                statue_icon = gamebox.from_image(camera.x - 300, camera.y - 250, 'Textures/statue_icon.png')
                 statue_icon.scale_by(0.05)
                 camera.draw(statue_icon)
                 # draws an icon in top-left to notify player that they have reached the checkpoint (statue)
@@ -202,8 +202,8 @@ def make_trainer(x, y):
     :param y: y coordinate
     :return: trainer and trainer2 lists of sprites
     """
-    images1 = gamebox.load_sprite_sheet("player_left.png", 1, 4)
-    images2 = gamebox.load_sprite_sheet("player_right.png", 1, 4)
+    images1 = gamebox.load_sprite_sheet("Textures/player_left.png", 1, 4)
+    images2 = gamebox.load_sprite_sheet("Textures/player_right.png", 1, 4)
     trainer = []
     for image in images1:
         trainer.append(gamebox.from_image(x, y, image))
@@ -287,8 +287,8 @@ def make_squirrel(x, y):
     :return: squirrel, squirrel2, squirrel3 sprite lists
     """
     global squirrel_frames
-    images1 = gamebox.load_sprite_sheet("squirrel_left.png", 1, 3)
-    images2 = gamebox.load_sprite_sheet("squirrel_right.png", 1, 3)
+    images1 = gamebox.load_sprite_sheet("Textures/squirrel_left.png", 1, 3)
+    images2 = gamebox.load_sprite_sheet("Textures/squirrel_right.png", 1, 3)
     squirrel = []
     for image in images1:
         squirrel.append(gamebox.from_image(x, y, image))
@@ -405,8 +405,8 @@ def make_girl(x, y):
     :return: girl and girl2 sprite lists
     """
     global girl_frames
-    images1 = gamebox.load_sprite_sheet("girl_left.png", 1, 3)
-    images2 = gamebox.load_sprite_sheet("girl_right.png", 1, 3)
+    images1 = gamebox.load_sprite_sheet("Textures/girl_left.png", 1, 3)
+    images2 = gamebox.load_sprite_sheet("Textures/girl_right.png", 1, 3)
     girl = []
     for image in images1:
         girl.append(gamebox.from_image(x, y, image))
@@ -492,8 +492,8 @@ def make_police(x, y):
     :return: police and police2 sprite lists
     """
     global police_frames
-    images1 = gamebox.load_sprite_sheet("police_left.png", 1, 4)
-    images2 = gamebox.load_sprite_sheet("police_right.png", 1, 4)
+    images1 = gamebox.load_sprite_sheet("Textures/police_left.png", 1, 4)
+    images2 = gamebox.load_sprite_sheet("Textures/police_right.png", 1, 4)
     police = []
     for image in images1:
         police.append(gamebox.from_image(x, y, image))
@@ -648,7 +648,7 @@ def tick(keys):
     """
     global game_on, game_on2, frame, clock, nextFrame, player, win, checkpoint
     camera.clear('black')
-    start = gamebox.from_image(camera.x, camera.y, 'start_screen.png')
+    start = gamebox.from_image(camera.x, camera.y, 'Textures/start_screen.png')
     if not game_on2:
         if pygame.K_SPACE in keys:
             game_on = True
@@ -656,12 +656,12 @@ def tick(keys):
             reset()
     if not game_on2:
         player = make_player(400, 500)
-        end_screen = gamebox.from_image(camera.x, camera.y, 'score_display.png')
+        end_screen = gamebox.from_image(camera.x, camera.y, 'Textures/score_display.png')
         camera.draw(end_screen)
         final_score = gamebox.from_text(camera.x, camera.y + 50, str(score2) + " Seconds", 66, 'white')
         camera.draw(final_score)
     if win:
-        win_screen = gamebox.from_image(camera.x, camera.y, 'win_screen.png')
+        win_screen = gamebox.from_image(camera.x, camera.y, 'Textures/win_screen.png')
         camera.draw(win_screen)
         final_score = gamebox.from_text(camera.x, camera.y + 20, str(score2) + " Seconds", 66, 'white')
         camera.draw(final_score)
